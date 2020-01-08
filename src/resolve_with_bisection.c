@@ -7,18 +7,6 @@
 
 #include "torus.h"
 
-static void check_first_values(config_t *config)
-{
-    if (abs(get_equation_result(config, 0)) < pow(10, -config->precision)) {
-        my_printf("x = 0\n");
-        exit(0);
-    }
-    if (abs(get_equation_result(config, 1)) < pow(10, -config->precision)) {
-        my_printf("x = 1\n");
-        exit(0);
-    }
-}
-
 static void update_values(double *x0, double *x1, double xm, config_t *config)
 {
     double result = 0;

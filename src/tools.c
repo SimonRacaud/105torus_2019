@@ -44,3 +44,15 @@ void display_x_value(double x, config_t *config)
     my_put_double(x, get_nb_decimal(x, config->precision));
     my_printf("\n");
 }
+
+void check_first_values(config_t *config)
+{
+    if (abs(get_equation_result(config, 0)) < pow(10, -config->precision)) {
+        my_printf("x = 0\n");
+        exit(0);
+    }
+    if (abs(get_equation_result(config, 1)) < pow(10, -config->precision)) {
+        my_printf("x = 1\n");
+        exit(0);
+    }
+}

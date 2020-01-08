@@ -11,8 +11,8 @@ static void check_first_value(config_t *config)
 {
     double nbr = ABS(get_equation_result(config, 0.5));
 
+    my_printf("x = 0.5\n");
     if (nbr < pow(10, -config->precision)) {
-        my_printf("x = 0.5\n");
         exit(0);
     }
 }
@@ -25,6 +25,14 @@ static double get_derive_result(config_t *config, double x)
         result += i * config->coef[i] * pow(x, (i - 1));
     }
     return result;
+}
+
+static double get_out_equation(double x1, double x0)
+{
+    double a = ABS(x1);
+    double b = ABS(x1 - x0);
+
+    return b / a;
 }
 
 void resolve_with_newton(config_t *config)
@@ -40,9 +48,9 @@ void resolve_with_newton(config_t *config)
             display_division_zero();
         x1 = x0 - (get_equation_result(config, x0) / derive);
         display_x_value(x1, config);
-        if (x1 == 0)
+        if (x1  == 0)
             display_division_zero();
-        if (ABS(x1 - x0) / ABS(x1) < pow(10, -config->precision))
+        if (get_out_equation(x1, x0) < pow(10, -config->precision))
             exit(0);
         x0 = x1;
     }

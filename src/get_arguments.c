@@ -23,7 +23,7 @@ static int str_is_number(char *str)
 
 static int check_arguments(config_t *config)
 {
-    if (config->opt < 1 && config->opt > 3) {
+    if (config->opt < 1 || config->opt > 3) {
         perror("ERROR: opt must be between 1 and 3\n");
         return EXIT_ERROR;
     } else if (config->precision < 0) {

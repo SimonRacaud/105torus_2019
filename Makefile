@@ -12,6 +12,7 @@ SRC	=	$(DSRC)main.c					\
 		$(DSRC)get_arguments.c			\
 		$(DSRC)resolve_with_bisection.c \
 		$(DSRC)resolve_with_newton.c \
+		$(DSRC)resolve_with_secante.c \
 		$(DSRC)tools.c \
 
 OBJ	=	$(SRC:.c=.o)

@@ -30,6 +30,6 @@ int torus(char **argv)
     else if (config.opt == NEWTON_MODE)
         resolve_with_newton(&config);
     else if (config.opt == SECANT_MODE)
-        resolve_with_bisection(&config);
+        resolve_with_secante(&config);
     return EXIT_SUCCESS;
 }

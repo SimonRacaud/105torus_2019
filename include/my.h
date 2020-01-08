@@ -16,7 +16,7 @@ int my_putstr(char const *str);
 int my_putnstr(char const *str, int n);
 int my_put_nbr(long long int nb);
 int my_putnbr_base(long long int nbr, char const *base);
-void my_put_double(double nb, int nb_decimal);
+void my_put_double(double nb, int pow_precision);
 int my_showstr(char const *str);
 int my_shownstr(char const *str, int n);
 int my_show_word_array(char * const *tab);

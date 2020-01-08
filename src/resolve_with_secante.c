@@ -11,12 +11,12 @@ static double compute_x2(config_t *config, double x0, double x1)
 {
     double x2 = 0;
 
-    x2 += get_equation_result(x1) * (x1 - x0);
-    if (get_equation_result(x1) - get_equation_result(x0) == 0) {
+    x2 += get_equation_result(config, x1) * (x1 - x0);
+    if (get_equation_result(config, x1) - get_equation_result(config, x0) == 0) {
         write(2, "Division by zero\n", 17);
         exit(84);
     }
-    x2 /= get_equation_result(x1) - get_equation_result(x0);
+    x2 /= get_equation_result(config, x1) - get_equation_result(config, x0);
     x2 *= -1;
     x2 += x1;
     return x2;
@@ -35,7 +35,7 @@ static void print_x_value(double x, int precision)
     my_printf("\n");
 }
 
-void resolve_xith_secante(config_t *config)
+void resolve_with_secante(config_t *config)
 {
     double x0 = 0;
     double x1 = 1;
@@ -43,7 +43,6 @@ void resolve_xith_secante(config_t *config)
     double a;
 
     check_first_values(config);
-    print_x_value(0.5, config->precision);
     for (int i = 0; i < 50; i++) {
         x2 = compute_x2(config, x0, x1);
         print_x_value(x2, config->precision);
