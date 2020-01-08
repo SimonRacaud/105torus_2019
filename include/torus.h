@@ -30,4 +30,6 @@ typedef struct config {
 int torus(char **argv);
 int get_arguments(config_t *config, char **argv);
 
+double get_equation_result(config_t *config, double x);
+
 #endif

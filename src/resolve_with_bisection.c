@@ -7,7 +7,7 @@
 
 #include "torus.h"
 
-static double get_equation_result(config_t *config, double x)
+double get_equation_result(config_t *config, double x)
 {
     double result = 0;
 
