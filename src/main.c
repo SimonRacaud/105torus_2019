@@ -19,13 +19,13 @@ int usage(int status)
     my_putstr("\tn\tprecision (the application of the polynomial");
     my_putstr(" to the solution should\n");
     my_putstr("\t\tbe smaller than 10ˆ-n)\n");
-    return EXIT_ERROR;
+    return status;
 }
 
 int main(int argc, char **argv)
 {
-    if (argc == 8) {
-        return torus(argc, argv);
+    if (argc == NB_ARG) {
+        return torus(argv);
     } else if (argc == 2 && my_strcmp(argv[1], "-h")) {
         return usage(EXIT_SUCCESS);
     } else {

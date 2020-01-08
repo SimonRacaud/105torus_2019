@@ -7,8 +7,10 @@
 
 DSRC	=	./src/
 
-SRC	=	$(DSRC)main.c		\
-		$(DSRC)105torus.c	\
+SRC	=	$(DSRC)main.c					\
+		$(DSRC)105torus.c				\
+		$(DSRC)get_arguments.c			\
+		$(DSRC)resolve_with_bisection.c \
 
 OBJ	=	$(SRC:.c=.o)
 
