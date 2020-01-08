@@ -7,7 +7,8 @@
 
 #include "../../include/my.h"
 
-static int round_dec_part(int dec_part, double nb, double precision)
+static long long int round_dec_part(long long int dec_part, double nb,
+long long int precision)
 {
     int int_part = nb;
 
@@ -23,8 +24,8 @@ static int round_dec_part(int dec_part, double nb, double precision)
     return dec_part;
 }
 
-static void arrange_and_put_the_dec_part(int dec_part, int pow_precision,
-double precision, double nb)
+static void arrange_and_put_the_dec_part(long long int dec_part, int pow_precision,
+long long int precision, double nb)
 {
     int int_len = 1;
 
@@ -32,7 +33,7 @@ double precision, double nb)
         dec_part *= -1;
     dec_part = round_dec_part(dec_part, nb, precision);
     if (dec_part > 0) {
-        for (int i = dec_part; i > 0 ; i /= 10)
+        for (long long int i = dec_part; i > 0 ; i /= 10)
             int_len++;
         for (int i = pow_precision - int_len; i >= 0 ; i--)
             my_putchar('0');
@@ -45,10 +46,10 @@ double precision, double nb)
 
 void my_put_double(double nb, int pow_precision)
 {
-    int int_part = nb;
-    int dec_part = 0;
-    double gap = 0;
-    double precision = pow(10, pow_precision);
+    long int int_part = nb;
+    long long int dec_part = 0;
+    long double gap = 0;
+    long long int precision = pow(10, pow_precision);
 
     if (nb < 0 && nb > -1)
         my_putchar('-');
