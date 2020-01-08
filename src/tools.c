@@ -19,3 +19,28 @@ int get_nb_decimal(double nbr, int precision_max)
     }
     return precision;
 }
+
+double get_equation_result(config_t *config, double x)
+{
+    double result = 0;
+
+    for (int i = 4; i >= 0; i--) {
+        result += config->coef[i];
+        if (i != 0)
+            result *= x;
+    }
+    return result;
+}
+
+void display_division_zero(void)
+{
+    write(2, "Division by zero\n", 17);
+    exit(84);
+}
+
+void display_x_value(double x, config_t *config)
+{
+    my_printf("x = ");
+    my_put_double(x, get_nb_decimal(x, config->precision));
+    my_printf("\n");
+}

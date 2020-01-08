@@ -25,6 +25,11 @@ int torus(char **argv)
     if (get_arguments(&config, argv))
         return EXIT_ERROR;
     debug_display(&config);
-    resolve_with_bisection(&config);
+    if (config.opt == BISECTION_MODE)
+        resolve_with_bisection(&config);
+    else if (config.opt == NEWTON_MODE)
+        resolve_with_newton(&config);
+    else if (config.opt == SECANT_MODE)
+        resolve_with_bisection(&config);
     return EXIT_SUCCESS;
 }

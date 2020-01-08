@@ -7,18 +7,6 @@
 
 #include "torus.h"
 
-double get_equation_result(config_t *config, double x)
-{
-    double result = 0;
-
-    for (int i = 4; i >= 0; i--) {
-        result += config->coef[i];
-        if (i != 0)
-            result *= x;
-    }
-    return result;
-}
-
 static void check_first_values(config_t *config)
 {
     if (abs(get_equation_result(config, 0)) < pow(10, -config->precision)) {
