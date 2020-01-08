@@ -9,9 +9,17 @@
 #define H_TORUS
 
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "my.h"
 
 #define EXIT_ERROR 84
+
+#define NB_ARG 8
+
+#define BISECTION_MODE 1
+#define NEWTON_MODE 2
+#define SECANT_MODE 3
 
 typedef struct config {
     int opt;
@@ -19,6 +27,7 @@ typedef struct config {
     int precision;
 } config_t;
 
-int torus(int argc, char **argv);
+int torus(char **argv);
+int get_arguments(config_t *config, char **argv);
 
 #endif
