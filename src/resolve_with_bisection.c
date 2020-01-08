@@ -54,7 +54,7 @@ void resolve_with_bisection(config_t *config)
     for (int i = 0; i < 50; i++) {
         xm = ABS(x1 + x0) / 2;
         my_printf("x = ");
-        my_put_double(xm, config->precision);
+        my_put_double(xm, get_nb_decimal(xm, config->precision));
         my_printf("\n");
         if (xm == 0) {
             write(2, "Division by zero\n", 17);

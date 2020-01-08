@@ -11,6 +11,7 @@ SRC	=	$(DSRC)main.c					\
 		$(DSRC)105torus.c				\
 		$(DSRC)get_arguments.c			\
 		$(DSRC)resolve_with_bisection.c \
+		$(DSRC)tools.c \
 
 OBJ	=	$(SRC:.c=.o)
 

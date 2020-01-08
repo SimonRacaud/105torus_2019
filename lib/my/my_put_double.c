@@ -1,66 +1,56 @@
 /*
 ** EPITECH PROJECT, 2019
-** ###
+** 101pong_2019
 ** File description:
-** Print a double
+** display a floating number
 */
 
+#include <math.h>
 #include "../../include/my.h"
 
-static int round_dec_part(int dec_part, double nb, double precision)
+static void display_decimal_digits(double decimal, int *decimal_len,
+int nb_decimal)
 {
-    int int_part = nb;
+    if (decimal != 0)
+        my_put_nbr(decimal);
+    for (int i = (nb_decimal - *decimal_len); i > 0; i--)
+        my_putchar('0');
+}
 
-    nb -= int_part;
-    nb *= precision;
-    nb = round(nb);
+static double calc_decimal(double nb, int nb_decimal)
+{
+    double integer = floor(nb);
+    double decimal;
+
     if (nb < 0)
-        nb *= -1;
-    if (nb > dec_part)
-        dec_part++;
-    if (nb < dec_part)
-        dec_part--;
-    return dec_part;
+        integer = ceil(nb);
+    decimal = round( (nb - integer) * pow(10, nb_decimal) );
+    if (decimal < 0)
+        decimal = -decimal;
+    if (decimal == 100)
+        decimal = -1;
+    return decimal;
 }
 
-static void arrange_and_put_the_dec_part(int dec_part, int pow_precision,
-double precision, double nb)
+void my_put_double(double nb, int nb_decimal)
 {
-    int int_len = 1;
-
-    if (dec_part < 0)
-        dec_part *= -1;
-    dec_part = round_dec_part(dec_part, nb, precision);
-    if (dec_part > 0) {
-        for (int i = dec_part; i > 0 ; i /= 10)
-            int_len++;
-        for (int i = pow_precision - int_len; i >= 0 ; i--)
-            my_putchar('0');
-    }
-    if (dec_part == 0)
-        for (int i = 0; i < pow_precision - 1; i++)
-            my_putchar('0');
-    my_put_nbr(dec_part);
-}
-
-void my_put_double(double nb, int pow_precision)
-{
-    int int_part = nb;
-    int dec_part = 0;
-    double gap = 0;
-    double precision = pow(10, pow_precision);
+    double decimal = calc_decimal(nb, nb_decimal);
+    int decimal_len = 0;
 
     if (nb < 0 && nb > -1)
         my_putchar('-');
-    dec_part = nb * precision - (int_part * precision);
-    gap = dec_part - (nb * precision - (int_part * precision));
-    if ((gap > 0.001 || gap < -0.001) && dec_part >= 0)
-        dec_part++;
-    if (dec_part == precision) {
-        dec_part = 0;
-        int_part++;
-    }
-    my_put_nbr(int_part);
+    if (decimal == -1)
+        my_put_nbr(round(nb));
+    else
+        my_put_nbr(nb);
     my_putchar('.');
-    arrange_and_put_the_dec_part(dec_part, pow_precision, precision, nb);
+    if (decimal < 1) {
+        decimal_len = 0;
+    } else {
+        while (decimal / my_compute_power_rec(10, decimal_len) >= 1)
+            decimal_len++;
+    }
+    if (decimal == -1)
+        decimal = 0;
+    display_decimal_digits(decimal, &decimal_len, nb_decimal);
 }
