@@ -21,6 +21,8 @@
 #define NEWTON_MODE 2
 #define SECANT_MODE 3
 
+#define ABS(x) (x < 0) ? (x * (-1)) : (x)
+
 typedef struct config {
     int opt;
     int coef[5];
