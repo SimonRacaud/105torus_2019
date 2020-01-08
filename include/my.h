@@ -9,6 +9,7 @@
 #define MY_H
 
 #include "my_printf.h"
+#include <math.h>
 
 void my_putchar(char c);
 int my_putstr(char const *str);
