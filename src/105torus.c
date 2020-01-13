@@ -22,9 +22,9 @@ int torus(char **argv)
 {
     config_t config;
 
-    if (get_arguments(&config, argv))
+    if (get_arguments(&config, argv)) {
         return EXIT_ERROR;
-    debug_display(&config);
+    }
     if (config.opt == BISECTION_MODE)
         resolve_with_bisection(&config);
     else if (config.opt == NEWTON_MODE)
