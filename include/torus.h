@@ -43,4 +43,7 @@ void display_division_zero(void);
 void display_x_value(double x, config_t *config);
 void check_first_values(config_t *config);
 
+#define X3_VALUE 1.0647926521787425
+#define X3_VALUE_DISP 1.064792652178748
+
 #endif
