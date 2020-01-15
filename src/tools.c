@@ -41,6 +41,10 @@ void display_division_zero(void)
 void display_x_value(double x, config_t *config)
 {
     printf("x = %.*f\n", get_nb_decimal(x, config->precision), x);
+    if (x < 0 || x > 1) {
+        write(2, "No solution found\n", 18);
+        exit(84);
+    }
 }
 
 void check_first_values(config_t *config)

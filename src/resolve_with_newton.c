@@ -42,7 +42,7 @@ void resolve_with_newton(config_t *config)
     double derive;
 
     check_first_value(config);
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 100; i++) {
         derive = get_derive_result(config, x0);
         if (derive == 0)
             display_division_zero();

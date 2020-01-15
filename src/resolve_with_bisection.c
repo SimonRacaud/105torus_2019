@@ -27,7 +27,7 @@ void resolve_with_bisection(config_t *config)
     double a;
 
     check_first_values(config);
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 100; i++) {
         xm = ABS(x1 + x0) / 2;
         printf("x = ");
         printf("%.*f\n", get_nb_decimal(xm, config->precision), xm);

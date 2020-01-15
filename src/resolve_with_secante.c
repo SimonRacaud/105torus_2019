@@ -28,13 +28,6 @@ static void update_values(double *x0, double *x1, double x2)
     *x1 = x2;
 }
 
-static void print_x_value(double x, int precision)
-{
-    my_printf("x = ");
-    my_put_double(x, get_nb_decimal(x, precision));
-    my_printf("\n");
-}
-
 void resolve_with_secante(config_t *config)
 {
     double x0 = 0;
@@ -43,9 +36,9 @@ void resolve_with_secante(config_t *config)
     double a;
 
     check_first_values(config);
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 100; i++) {
         x2 = compute_x2(config, x0, x1);
-        print_x_value(x2, config->precision);
+        display_x_value(x2, config);
         if (x2 == 0) {
             write(2, "Division by zero\n", 17);
             exit(84);
