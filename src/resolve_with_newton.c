@@ -29,8 +29,8 @@ static double get_derive_result(config_t *config, double x)
 
 static double get_out_equation(double x1, double x0)
 {
-    double a = ABS(x1);
     double b = ABS(x1 - x0);
+    double a = ABS(x1);
 
     return b / a;
 }
@@ -49,7 +49,7 @@ void resolve_with_newton(config_t *config)
         x1 = x0 - (get_equation_result(config, x0) / derive);
         display_x_value(x1, config);
         if (x1 == 0)
-            display_division_zero();
+            exit(0);
         if (get_out_equation(x1, x0) < pow(10, -config->precision))
             exit(0);
         x0 = x1;
