@@ -50,8 +50,13 @@ void resolve_with_newton(config_t *config)
         display_x_value(x1, config);
         if (x1 == 0)
             exit(0);
-        if (get_out_equation(x1, x0) < pow(10, -config->precision))
+        if (get_out_equation(x1, x0) < pow(10, -config->precision)) {
+            if (x1 < 0 || x1 > 1) {
+                write(2, "No solution found\n", 18);
+                exit(84);
+            }
             exit(0);
+        }
         x0 = x1;
     }
     write(2, "No solution found\n", 18);

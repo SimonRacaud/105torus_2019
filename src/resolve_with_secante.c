@@ -45,8 +45,13 @@ void resolve_with_secante(config_t *config)
         }
         a = ABS(x2 - x1);
         a /= ABS(x2);
-        if (a < pow(10, -config->precision))
+        if (a < pow(10, -config->precision)) {
+            if (x2 < 0 || x2 > 1) {
+                write(2, "No solution found\n", 18);
+                exit(84);
+            }
             exit(0);
+        }
         update_values(&x0, &x1, x2);
     }
     write(2, "No solution found\n", 18);

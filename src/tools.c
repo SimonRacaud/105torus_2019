@@ -40,10 +40,15 @@ void display_division_zero(void)
 
 void display_x_value(double x, config_t *config)
 {
-    printf("x = %.*f\n", get_nb_decimal(x, config->precision), x);
-    if (x < 0 || x > 1) {
-        write(2, "No solution found\n", 18);
-        exit(84);
+    double x2 = x * pow(10, config->precision) - (int)x;
+
+    x2 = x2 - (int)x2;
+    x2 *= pow(10, 5);
+    x2 = floor(x2);
+    if (x2 != 0) {
+        printf("x = %.*f\n", get_nb_decimal(x, config->precision), x);
+    } else {
+        printf("x = %.*g\n", get_nb_decimal(x, config->precision), x);
     }
 }
 

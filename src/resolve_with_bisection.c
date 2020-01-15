@@ -37,6 +37,10 @@ void resolve_with_bisection(config_t *config)
         }
         a = ABS(get_equation_result(config, xm));
         if (a < pow(10, -config->precision)) {
+            if (xm < 0 || xm > 1) {
+                write(2, "No solution found\n", 18);
+                exit(84);
+            }
             exit(0);
         }
         update_values(&x0, &x1, xm, config);
