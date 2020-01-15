@@ -42,7 +42,7 @@ void display_x_value(double x, config_t *config)
 {
     long double x2;
 
-    x = round(x * powl(10, config->precision + 5)) / powl(10, config->precision + 5);
+    x = round(x * powl(10, config->precision + 6)) / powl(10, config->precision + 6);
     x2 = x * powl(10, config->precision);
     x2 = x2 - ((int)x2);
     x2 *= powl(10, 5);
