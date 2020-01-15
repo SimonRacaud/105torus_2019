@@ -40,9 +40,11 @@ void display_division_zero(void)
 
 void display_x_value(double x, config_t *config)
 {
-    double x2 = x * pow(10, config->precision) - (int)x;
+    double x2;
 
-    x2 = x2 - (int)x2;
+    x = round(x * pow(10, config->precision + 5)) / pow(10, config->precision + 5);
+    x2 = x * pow(10, config->precision);
+    x2 = x2 - ((int)x2);
     x2 *= pow(10, 5);
     x2 = floor(x2);
     if (x2 != 0) {
