@@ -40,7 +40,6 @@ void display_division_zero(void)
 
 void display_x_value(double x, config_t *config)
 {
-    double x3 = round(x * powl(10, config->precision + 5)) / powl(10, config->precision + 5);
     long double x2;
 
     x = round(x * powl(10, config->precision + 6)) / powl(10, config->precision + 6);
@@ -49,10 +48,7 @@ void display_x_value(double x, config_t *config)
     x2 *= powl(10, 5);
     x2 = floor(x2);
     if (x2 != 0) {
-        if (x3 == X3_VALUE) {
-            printf("x = %.*f\n", get_nb_decimal(x, config->precision), X3_VALUE_DISP);
-        } else
-            printf("x = %.*f\n", get_nb_decimal(x, config->precision), x);
+        printf("x = %.*f\n", get_nb_decimal(x, config->precision), x);
     } else {
         printf("x = %.*g\n", get_nb_decimal(x, config->precision), x);
     }
